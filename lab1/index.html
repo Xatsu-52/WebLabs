@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лабораторная работа №1 — Расчет зарплаты</title>
     <link rel="stylesheet" href="look.css">
     <script type="text/javascript" src="logic.js"></script>
@@ -11,8 +10,7 @@
     <div class="container">
         <h1>Расчет заработной платы</h1>
         <p class="description">
-            Сценарий определяет зарплату работнику при почасовой оплате.<br>
-            <strong>Событие расчета срабатывает при получении фокуса</strong> полем «Итоговая зарплата» (кликните в поле или перейдите клавишей Tab).
+            Определение зарплаты работника при почасовой оплате.<br>
         </p>
 
         <form class="salary-form" onsubmit="return false;">
@@ -27,8 +25,8 @@
             </div>
 
             <div class="form-group">
-                <label for="salary">Итоговая зарплата (фокус запускает расчет):</label>
-                <input type="text" id="salary" placeholder="Нажмите сюда для расчета" readonly>
+                <label for="salary">Итоговая зарплата:</label>
+                <input type="text" id="salary" placeholder="Рассчитать" readonly>
             </div>
 
             <div class="actions">
