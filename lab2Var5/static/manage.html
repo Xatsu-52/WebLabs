@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Управление ссылками</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <nav>
+    <a href="/">Просмотр</a>
+    <a href="/manage">Управление</a>
+    <a href="/contacts">Контакты</a>
+    <a href="/docs">Swagger</a>
+  </nav>
+  <main>
+    <h1>Добавление и удаление ссылок</h1>
+    <form id="form">
+      <input type="text" id="title" placeholder="Название" required>
+      <input type="url" id="url" placeholder="https://example.com" required>
+      <button type="submit">Добавить</button>
+      <button type="button" id="cancel-edit" hidden>Отмена</button>
+    </form>
+    <p id="counter"></p>
+    <ul id="list"></ul>
+  </main>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/manage.js"></script>
+</body>
+</html>
