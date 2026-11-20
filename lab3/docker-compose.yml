@@ -16,7 +16,6 @@ services:
   app:
     build: .
     ports:
-      # снаружи 8080, внутри контейнера приложение слушает 8000
       - "8080:8000"
     environment:
       DATABASE_URL: postgresql+psycopg2://links:links@db:5432/links

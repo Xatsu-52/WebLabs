@@ -1,6 +1,5 @@
 FROM python:3.12-slim
 
-# Чтобы print() сразу попадал в логи, а не копился в буфере.
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
