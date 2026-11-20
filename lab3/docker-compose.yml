@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: links
+      POSTGRES_USER: links
+      POSTGRES_PASSWORD: links
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U links -d links"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    ports:
+      # снаружи 8080, внутри контейнера приложение слушает 8000
+      - "8080:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg2://links:links@db:5432/links
+      API_KEY: student-key
+      APP_PORT: 8080
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
