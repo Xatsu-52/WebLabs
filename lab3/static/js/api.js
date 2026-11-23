@@ -1,6 +1,5 @@
 const API_KEY_STORAGE = "apiKey";
 
-// Спрашиваем ключ один раз и запоминаем в браузере.
 function getApiKey() {
   let key = localStorage.getItem(API_KEY_STORAGE);
   if (!key) {

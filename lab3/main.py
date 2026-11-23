@@ -13,15 +13,12 @@ from app.presentation.api import router
 
 STATIC_DIR = Path(__file__).parent / "static"
 
-# Порт, по которому сайт открывается с компьютера.
-# В docker-compose это 8080, при локальном запуске — 8000.
+
 HOST_PORT = os.getenv("APP_PORT", "8000")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # В docker-compose PostgreSQL может запускаться чуть дольше приложения,
-    # поэтому несколько раз пробуем подключиться.
     for attempt in range(10):
         try:
             create_tables()
@@ -31,7 +28,6 @@ async def lifespan(app: FastAPI):
             print("Ждём PostgreSQL...")
             time.sleep(2)
 
-    # 0.0.0.0 — это адрес внутри контейнера, с хоста сайт открывается по 127.0.0.1.
     print(f"Сайт: http://127.0.0.1:{HOST_PORT}")
     print(f"Swagger: http://127.0.0.1:{HOST_PORT}/docs")
     yield
@@ -53,7 +49,6 @@ def limit_handler(request, exc):
 
 @app.get("/health", include_in_schema=False)
 def health():
-    # Простая проверка, что приложение запустилось.
     return {"status": "ok"}
 
 
